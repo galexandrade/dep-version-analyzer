@@ -63,7 +63,7 @@ const populateTable = (tableBody, items) => {
 
         row.addEventListener('click', () => {
             window.open(
-                `https://www.npmjs.com/package/${dependencyName}`,
+                'https://www.npmjs.com/package/' + dependencyName,
                 '_blank'
             );
         });

@@ -34,7 +34,13 @@ After you change something in the `src` folder, you need to run `yarn build` to 
 
 ### Testing the command
 
-To test the NPX command, you must install the local project locally by executing `npm i -g`. Then you can execute the following command and it will be from your local project:
+If you already had installed or executed the command before, you will need to remove it first:
+
+```
+npm uninstall dep-version-analyzer -g
+```
+
+Then, install the local local project by executing `npm i -g`. Then you can execute the following command and it will be from your local project:
 
 ```
 npx dep-version-analyzer
