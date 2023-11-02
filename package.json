@@ -1,6 +1,6 @@
 {
     "name": "dep-version-analyzer",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "An NPM command that analyzes the versions of your dependencies in a visual dashboard",
     "main": "index.js",
     "repository": {
