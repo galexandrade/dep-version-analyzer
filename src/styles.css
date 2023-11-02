@@ -138,11 +138,16 @@ table thead tr th {
 }
 
 #dashboard {
-    max-width: 2040px;
+    max-width: 1440px;
 }
 
 #dashboard table * {
     text-align: center;
+}
+
+#dashboard table tbody tr:hover {
+    background-color: transparent;
+    cursor: default;
 }
 
 #dashboard table tbody tr td:first-of-type {
