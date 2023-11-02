@@ -330,12 +330,17 @@ const populateTable = (tableBody, items) => {
     items.forEach((dependency) => {
         const row = document.createElement('tr');
 
-        const { dependencyName, version, latestVersion, updateType } =
-            dependency;
+        const {
+            dependencyName,
+            officialName,
+            version,
+            latestVersion,
+            updateType
+        } = dependency;
 
         row.addEventListener('click', () => {
             window.open(
-                'https://www.npmjs.com/package/' + dependencyName,
+                'https://www.npmjs.com/package/' + officialName,
                 '_blank'
             );
         });
@@ -739,7 +744,7 @@ const index = `
                         <option value="Major update">Major update</option>
                     </select>
                 </div>
-                <table>
+                <table data-filter="Major update">
                     <thead>
                         <tr>
                             <th>Dependency</th>

@@ -58,12 +58,17 @@ const populateTable = (tableBody, items) => {
     items.forEach((dependency) => {
         const row = document.createElement('tr');
 
-        const { dependencyName, version, latestVersion, updateType } =
-            dependency;
+        const {
+            dependencyName,
+            officialName,
+            version,
+            latestVersion,
+            updateType
+        } = dependency;
 
         row.addEventListener('click', () => {
             window.open(
-                'https://www.npmjs.com/package/' + dependencyName,
+                'https://www.npmjs.com/package/' + officialName,
                 '_blank'
             );
         });
