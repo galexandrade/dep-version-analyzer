@@ -7,7 +7,7 @@
 Run the following command in a folder that contains a `package.json` file and you should see the result in your browser:
 
 ```
-👉 npx dep-version-analizer
+👉 npx dep-version-analyzer
 ```
 
 <img src="assets/application.png">
