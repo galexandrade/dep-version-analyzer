@@ -2,13 +2,9 @@
   <img src="assets/logo.png">
 </p>
 
-## Why ?
-
-Some text
-
 ## Get started
 
-Simply run the following command in a folder that contains a `package.json` file and you should see the result in your browser:
+Run the following command in a folder that contains a `package.json` file and you should see the result in your browser:
 
 ```
 👉 npx dep-version-analizer
@@ -38,7 +34,7 @@ After you change something in the `src` folder, you need to run `yarn build` to 
 
 ### Testing the command
 
-To test the NPX command, you have to install the local project locally by eecuting `npm i -g`. Then you can execute the following command and it will be from you local project:
+To test the NPX command, you must install the local project locally by executing `npm i -g`. Then you can execute the following command and it will be from your local project:
 
 ```
 npx dep-version-analyzer
