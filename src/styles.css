@@ -20,6 +20,17 @@ header {
     margin-bottom: 40px;
 }
 
+nav {
+    position: relative;
+}
+
+nav img {
+    max-width: 250px;
+    position: absolute;
+    top: 5px;
+    left: 32px;
+}
+
 nav ul {
     display: flex;
     list-style: none;
