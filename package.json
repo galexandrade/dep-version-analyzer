@@ -3,6 +3,10 @@
     "version": "1.0.0",
     "description": "An NPM command that analyzes the versions of your dependencies in a visual dashboard",
     "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/galexandrade/dep-version-analyzer.git"
+    },
     "dependencies": {
         "axios": "^1.6.0",
         "node-fetch": "^3.3.2",
@@ -15,7 +19,7 @@
         "build": "node scripts/generateTemplate.js",
         "start": "http-server src -o"
     },
-    "author": "",
+    "author": "Alex Andrade",
     "license": "ISC",
     "devDependencies": {
         "http-server": "^14.1.1"
