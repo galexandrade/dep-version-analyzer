@@ -35,15 +35,51 @@ const showDevDependenciesContent = () => {
     document.getElementById(DEV_DEPENDENCIES_ID).classList.add('active');
 };
 
+const renderCell = (content, row, wrapper) => {
+    const cellElement = document.createElement('td');
+
+    if (wrapper) {
+        const wrapperElement = document.createElement(wrapper.tag);
+        if (wrapper.classes) {
+            wrapper.classes.forEach((className) =>
+                wrapperElement.classList.add(className)
+            );
+        }
+        wrapperElement.append(content);
+        cellElement.append(wrapperElement);
+    } else {
+        cellElement.append(content);
+    }
+    row.append(cellElement);
+};
+
 const populateTable = (tableBody, items) => {
     items.forEach((dependency) => {
         const row = document.createElement('tr');
 
-        Object.values(dependency).forEach((cell) => {
-            const cellElement = document.createElement('td');
-            cellElement.append(cell);
-            row.append(cellElement);
-        });
+        const { dependencyName, version, latestVersion, updateType } =
+            dependency;
+
+        renderCell(dependencyName, row);
+        renderCell(version, row);
+        renderCell(latestVersion, row);
+
+        const pillClasses = ['pill'];
+        switch (updateType) {
+            case 'Updated':
+                pillClasses.push('pill--primary');
+                break;
+            case 'Patch update':
+                pillClasses.push('pill--info');
+                break;
+            case 'Minor update':
+                pillClasses.push('pill--warning');
+                break;
+            case 'Major update':
+                pillClasses.push('pill--danger');
+                break;
+        }
+        renderCell(updateType, row, { tag: 'div', classes: pillClasses });
 
         tableBody.append(row);
     });
