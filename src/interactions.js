@@ -60,6 +60,13 @@ const populateTable = (tableBody, items) => {
         const { dependencyName, version, latestVersion, updateType } =
             dependency;
 
+        row.addEventListener('click', () => {
+            window.open(
+                `https://www.npmjs.com/package/${dependencyName}`,
+                '_blank'
+            );
+        });
+
         renderCell(dependencyName, row);
         renderCell(version, row);
         renderCell(latestVersion, row);
