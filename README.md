@@ -8,7 +8,11 @@ Some text
 
 ## Get started
 
-Simply run `npx dep-version-analizer` in a folder that contains a `package.json` file and you should see the result in your browser:
+Simply run the following command in a folder that contains a `package.json` file and you should see the result in your browser:
+
+```
+👉 npx dep-version-analizer
+```
 
 <img src="assets/application.png">
 
