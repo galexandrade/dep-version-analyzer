@@ -160,6 +160,7 @@ const getUpdatedVersions = async (dependencies) => {
         const npmData = responsesMap[officialDependency.officialName];
         return {
             ...dependency,
+            officialName: npmData.name,
             latestVersion: npmData.version,
             updateType: calculateUpdateType(
                 officialDependency.officialVersion,

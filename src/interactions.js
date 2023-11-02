@@ -35,15 +35,64 @@ const showDevDependenciesContent = () => {
     document.getElementById(DEV_DEPENDENCIES_ID).classList.add('active');
 };
 
+const renderCell = (content, row, wrapper) => {
+    const cellElement = document.createElement('td');
+
+    if (wrapper) {
+        const wrapperElement = document.createElement(wrapper.tag);
+        if (wrapper.classes) {
+            wrapper.classes.forEach((className) =>
+                wrapperElement.classList.add(className)
+            );
+        }
+        wrapperElement.append(content);
+        cellElement.append(wrapperElement);
+    } else {
+        cellElement.append(content);
+    }
+    row.append(cellElement);
+};
+
 const populateTable = (tableBody, items) => {
+    tableBody.innerHTML = '';
     items.forEach((dependency) => {
         const row = document.createElement('tr');
 
-        Object.values(dependency).forEach((cell) => {
-            const cellElement = document.createElement('td');
-            cellElement.append(cell);
-            row.append(cellElement);
+        const {
+            dependencyName,
+            officialName,
+            version,
+            latestVersion,
+            updateType
+        } = dependency;
+
+        row.addEventListener('click', () => {
+            window.open(
+                'https://www.npmjs.com/package/' + officialName,
+                '_blank'
+            );
         });
+
+        renderCell(dependencyName, row);
+        renderCell(version, row);
+        renderCell(latestVersion, row);
+
+        const pillClasses = ['pill'];
+        switch (updateType) {
+            case 'Updated':
+                pillClasses.push('pill--primary');
+                break;
+            case 'Patch update':
+                pillClasses.push('pill--info');
+                break;
+            case 'Minor update':
+                pillClasses.push('pill--warning');
+                break;
+            case 'Major update':
+                pillClasses.push('pill--danger');
+                break;
+        }
+        renderCell(updateType, row, { tag: 'div', classes: pillClasses });
 
         tableBody.append(row);
     });
@@ -73,4 +122,28 @@ dependenciesMenu.addEventListener('click', () => {
 devDependenciesMenu.addEventListener('click', () => {
     selectNavItem(devDependenciesMenu);
     showDevDependenciesContent();
+});
+
+const dependenciesFilter = document.getElementById('dependencies-filter');
+dependenciesFilter.addEventListener('change', (e) => {
+    const filteredItems = DEPENDENCIES.filter(
+        (dep) => dep.updateType === e.target.value
+    );
+    populateTable(
+        document.querySelector('#' + DEPENDENCIES_ID + ' table tbody'),
+        e.target.value === 'All' ? DEPENDENCIES : filteredItems
+    );
+});
+
+const devDependenciesFilter = document.getElementById(
+    'dev-dependencies-filter'
+);
+devDependenciesFilter.addEventListener('change', (e) => {
+    const filteredItems = DEV_DEPENDENCIES.filter(
+        (dep) => dep.updateType === e.target.value
+    );
+    populateTable(
+        document.querySelector('#' + DEV_DEPENDENCIES_ID + ' table tbody'),
+        e.target.value === 'All' ? DEV_DEPENDENCIES : filteredItems
+    );
 });

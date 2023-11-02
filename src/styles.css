@@ -8,6 +8,10 @@
     --color-grey-100: #f3f3f3;
     --color-grey-200: #d5d5d5;
     --color-grey-500: #464646;
+    --color-radish-400: #e76767;
+    --color-mint-400: #3abda9;
+    --color-blueberry-400: #5bc0de;
+    --color-banana-400: #ffc74a;
 }
 
 body {
@@ -18,6 +22,17 @@ header {
     border-bottom: 1px solid #d5d5d5;
     font-size: 1rem;
     margin-bottom: 40px;
+}
+
+nav {
+    position: relative;
+}
+
+nav img {
+    max-width: 250px;
+    position: absolute;
+    top: 5px;
+    left: 32px;
 }
 
 nav ul {
@@ -94,6 +109,11 @@ table tbody tr:last-of-type > td:last-of-type {
     border-bottom-right-radius: 8px;
 }
 
+table tbody tr:hover {
+    background-color: var(--color-grey-100);
+    cursor: pointer;
+}
+
 table tbody tr td {
     position: relative;
     border-bottom: 1px solid var(--color-grey-200);
@@ -118,11 +138,16 @@ table thead tr th {
 }
 
 #dashboard {
-    max-width: 2040px;
+    max-width: 1440px;
 }
 
 #dashboard table * {
     text-align: center;
+}
+
+#dashboard table tbody tr:hover {
+    background-color: transparent;
+    cursor: default;
 }
 
 #dashboard table tbody tr td:first-of-type {
@@ -147,4 +172,31 @@ table thead tr th {
 .card {
     border: 1px solid var(--color-grey-200);
     flex: 1;
+}
+
+.pill {
+    display: inline;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.pill--primary {
+    background-color: var(--color-mint-400);
+}
+.pill--info {
+    background-color: var(--color-blueberry-400);
+}
+.pill--warning {
+    background-color: var(--color-banana-400);
+}
+.pill--danger {
+    background-color: var(--color-radish-400);
+}
+
+.filters {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 40px;
 }

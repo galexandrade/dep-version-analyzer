@@ -107,8 +107,7 @@ const fillDepVsDevDepChart = () => {
             }
         ],
         chart: {
-            type: 'bar',
-            height: 430
+            type: 'bar'
         },
         plotOptions: {
             bar: {
