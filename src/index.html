@@ -471,6 +471,16 @@
                 </table>
             </div>
             <div id="dependencies">
+                <div class="filters">
+                    <label for="dependencies-filter">Filter update type:</label>
+                    <select id="dependencies-filter">
+                        <option value="All">All</option>
+                        <option value="Updated">Updated</option>
+                        <option value="Patch update">Patch update</option>
+                        <option value="Minor update">Minor update</option>
+                        <option value="Major update">Major update</option>
+                    </select>
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -484,6 +494,18 @@
                 </table>
             </div>
             <div id="dev-dependencies">
+                <div class="filters">
+                    <label for="dev-dependencies-filter"
+                        >Filter update type:</label
+                    >
+                    <select id="dev-dependencies-filter">
+                        <option value="All">All</option>
+                        <option value="Updated">Updated</option>
+                        <option value="Patch update">Patch update</option>
+                        <option value="Minor update">Minor update</option>
+                        <option value="Major update">Major update</option>
+                    </select>
+                </div>
                 <table>
                     <thead>
                         <tr>

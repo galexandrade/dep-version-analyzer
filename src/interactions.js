@@ -54,6 +54,7 @@ const renderCell = (content, row, wrapper) => {
 };
 
 const populateTable = (tableBody, items) => {
+    tableBody.innerHTML = '';
     items.forEach((dependency) => {
         const row = document.createElement('tr');
 
@@ -116,4 +117,28 @@ dependenciesMenu.addEventListener('click', () => {
 devDependenciesMenu.addEventListener('click', () => {
     selectNavItem(devDependenciesMenu);
     showDevDependenciesContent();
+});
+
+const dependenciesFilter = document.getElementById('dependencies-filter');
+dependenciesFilter.addEventListener('change', (e) => {
+    const filteredItems = DEPENDENCIES.filter(
+        (dep) => dep.updateType === e.target.value
+    );
+    populateTable(
+        document.querySelector('#' + DEPENDENCIES_ID + ' table tbody'),
+        e.target.value === 'All' ? DEPENDENCIES : filteredItems
+    );
+});
+
+const devDependenciesFilter = document.getElementById(
+    'dev-dependencies-filter'
+);
+devDependenciesFilter.addEventListener('change', (e) => {
+    const filteredItems = DEV_DEPENDENCIES.filter(
+        (dep) => dep.updateType === e.target.value
+    );
+    populateTable(
+        document.querySelector('#' + DEV_DEPENDENCIES_ID + ' table tbody'),
+        e.target.value === 'All' ? DEV_DEPENDENCIES : filteredItems
+    );
 });
