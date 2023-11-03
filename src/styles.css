@@ -7,6 +7,7 @@
 
     --color-grey-100: #f3f3f3;
     --color-grey-200: #d5d5d5;
+    --color-grey-300: #949494;
     --color-grey-500: #464646;
     --color-radish-400: #e76767;
     --color-mint-400: #3abda9;
@@ -179,6 +180,7 @@ table thead tr th {
     padding: 5px;
     border-radius: 5px;
     color: white;
+    text-wrap: nowrap;
 }
 
 .pill--primary {
@@ -199,4 +201,13 @@ table thead tr th {
     justify-content: flex-end;
     gap: 8px;
     margin-bottom: 40px;
+}
+
+.dependency-description {
+    display: block;
+    margin-top: 5px;
+    color: var(--color-grey-300);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
