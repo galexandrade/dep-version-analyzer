@@ -60,6 +60,7 @@ const populateTable = (tableBody, items) => {
 
         const {
             dependencyName,
+            description,
             officialName,
             version,
             latestVersion,
@@ -73,7 +74,19 @@ const populateTable = (tableBody, items) => {
             );
         });
 
-        renderCell(dependencyName, row);
+        if (description) {
+            const depTitleElement = document.createElement('div');
+            depTitleElement.append(dependencyName);
+            const depDescriptionElement = document.createElement('span');
+            depDescriptionElement.append(description);
+            depDescriptionElement.classList.add('dependency-description');
+            depDescriptionElement.setAttribute('title', description);
+            depTitleElement.append(depDescriptionElement);
+            renderCell(depTitleElement, row);
+        } else {
+            renderCell(dependencyName, row);
+        }
+
         renderCell(version, row);
         renderCell(latestVersion, row);
 

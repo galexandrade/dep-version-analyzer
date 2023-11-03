@@ -332,6 +332,7 @@ const populateTable = (tableBody, items) => {
 
         const {
             dependencyName,
+            description,
             officialName,
             version,
             latestVersion,
@@ -345,7 +346,19 @@ const populateTable = (tableBody, items) => {
             );
         });
 
-        renderCell(dependencyName, row);
+        if (description) {
+            const depTitleElement = document.createElement('div');
+            depTitleElement.append(dependencyName);
+            const depDescriptionElement = document.createElement('span');
+            depDescriptionElement.append(description);
+            depDescriptionElement.classList.add('dependency-description');
+            depDescriptionElement.setAttribute('title', description);
+            depTitleElement.append(depDescriptionElement);
+            renderCell(depTitleElement, row);
+        } else {
+            renderCell(dependencyName, row);
+        }
+
         renderCell(version, row);
         renderCell(latestVersion, row);
 
@@ -432,6 +445,7 @@ const styles = `
 
     --color-grey-100: #f3f3f3;
     --color-grey-200: #d5d5d5;
+    --color-grey-300: #949494;
     --color-grey-500: #464646;
     --color-radish-400: #e76767;
     --color-mint-400: #3abda9;
@@ -604,6 +618,7 @@ table thead tr th {
     padding: 5px;
     border-radius: 5px;
     color: white;
+    text-wrap: nowrap;
 }
 
 .pill--primary {
@@ -624,6 +639,15 @@ table thead tr th {
     justify-content: flex-end;
     gap: 8px;
     margin-bottom: 40px;
+}
+
+.dependency-description {
+    display: block;
+    margin-top: 5px;
+    color: var(--color-grey-300);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 `;
@@ -720,6 +744,12 @@ const index = `
                     </select>
                 </div>
                 <table>
+                    <colgroup>
+                        <col style="width: 40%" />
+                        <col style="width: 20%" />
+                        <col style="width: 20%" />
+                        <col style="width: 20%" />
+                    </colgroup>
                     <thead>
                         <tr>
                             <th>Dependency</th>
@@ -745,6 +775,12 @@ const index = `
                     </select>
                 </div>
                 <table data-filter="Major update">
+                    <colgroup>
+                        <col style="width: 40%" />
+                        <col style="width: 20%" />
+                        <col style="width: 20%" />
+                        <col style="width: 20%" />
+                    </colgroup>
                     <thead>
                         <tr>
                             <th>Dependency</th>
